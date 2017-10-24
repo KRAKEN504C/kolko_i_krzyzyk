@@ -1,9 +1,9 @@
 /*
 Konrad Roszczynialski
-kó³ko i krzy¿yk wersja 9-planszowa.
+kï¿½ï¿½ko i krzyï¿½yk wersja 9-planszowa.
 
 Do zrobienia:
--poprawa funkcji przemieszczajacej miêdzy mini planszami.
+-poprawa funkcji przemieszczajacej miï¿½dzy mini planszami.
 -naprawic SI
 */
 #include <iostream>
@@ -18,7 +18,7 @@ int checkwin = 0;
 //1.ta funkcja przyjmuje od gracza wspolrzedne, gdzie gracz chce umiescic swoj znak.
 void move(int *x, int *y);
 
-//funkcja przyjmuje wspó³rzêdne dla SI
+//funkcja przyjmuje wspï¿½ï¿½rzï¿½dne dla SI
 void moveSI(int *ptchboard,int *x, int *y);
 
 //3.ta funkcja bierze zmodyfikawane wspolrzedne, i wstawia znak w odpowiednie miejsce.
@@ -26,7 +26,7 @@ void makemove(int *x, int *y, int *plr);
 
 
 //4.ta funkcja przesuwa pole, na ktorym odbywa sie rozgrywka.
-//specjalna alternatywa. 9 if-ów. kazdy zmienia pole w zaleznosci od niezmodyfikowanych wspolrzednych
+//specjalna alternatywa. 9 if-ï¿½w. kazdy zmienia pole w zaleznosci od niezmodyfikowanych wspolrzednych
 //trza poprawic
 int moveminiboard(int x, int y, int chboard);
 
@@ -39,7 +39,7 @@ void checkboard(int chboard, int *x, int *y);
 //0. ta funkcja wyswietla pole gry.
 void board();
 
-//funkcja sprawdzajaca, czy ktorys gracz wygra³. albo cay nie bylo remisu. Jest 8 mozliwosci wygranej w normalne kolko i krzyzyk. dziala z opuznieniem jednego ruchu.
+//funkcja sprawdzajaca, czy ktorys gracz wygraï¿½. albo cay nie bylo remisu. Jest 8 mozliwosci wygranej w normalne kolko i krzyzyk. dziala z opuznieniem jednego ruchu.
 int fcheckwin();
 
 
@@ -92,17 +92,10 @@ int main()
 
 			makemove(wspx, wspy, wspplr);
 
-			cout << "chboard= " << chboard;
-
 			newchboard = moveminiboard(niezmienionex, niezmienioney, chboard);
 			chboard = newchboard;
-
-			cout << "\t" << "newchboard= " << newchboard << endl;
-
-			cout << "niezmienione x= " << niezmienionex << "\t" << "niezmienione y= " << niezmienioney << endl;
 			//system("pause");
 			checkwin = fcheckwin();
-			cout << "\ncheckwin= " << checkwin << endl;
 			system("pause");
 		}
 			else
@@ -155,7 +148,7 @@ void move(int *x, int *y)
 	*y = inney;
 	//cout << "test";
 }
-//ta funkcja jest za prosta, ¿eby ja zepsuæ.
+//ta funkcja jest za prosta, ï¿½eby ja zepsuï¿½.
 void makemove(int *x, int *y, int *plr)
 {
 	if (*plr == 0)
@@ -174,82 +167,50 @@ int moveminiboard(int x, int y, int chboard)
 {
 	if (x == 1 && y == 1)
 	{
-		if (chboard == 4 || chboard == 7) { return chboard -= 3; }
-		else
-			if (chboard == 3 || chboard == 2) { return chboard -= 1; }
-			else
-				if (chboard == 1) { return chboard; }
-				else
-					return chboard -= 4;
+		return chboard = 1;
 	}
 	else
 		if (x == 1 && y == 2)
 		{
-			if (chboard == 1 || chboard == 4 || chboard == 7) { return chboard; }
-			else
-				return chboard -= 1;
+			return chboard = 4;
 		}
 		else
 			if (x == 1 && y == 3)
 			{
-				if (chboard == 1 || chboard == 4) { return chboard += 3; }
-				else
-					if (chboard == 8 || chboard == 9) { return chboard -= 1; }
-					else
-						if (chboard == 7) { return chboard; }
-						else
-							return chboard += 2;
+				return chboard = 7;
 			}
 			else
 				if (x == 2 && y == 1)
 				{
-					if (chboard >= 1 && chboard <= 3) { return chboard; }
-					else
-						return chboard -= 3;
+					return chboard = 2;
 				}
 				else
 					if (x == 2 && y == 2)
 					{
-						return chboard;
+						return chboard = 5;
 					}
 					else
 						if (x == 2 && y == 3)
 						{
-							if (chboard >= 7 && chboard <= 9) { return chboard; }
-							else
-								return chboard += 3;
+							return chboard = 8;
 						}
 						else
 							if (x == 3 && y == 1)
 							{
-								if (chboard == 2 || chboard == 1) { return chboard += 1; }
-								else
-									if (chboard == 6 || chboard == 9) { return chboard -= 3; }
-									else
-										if (chboard == 3) { return chboard; }
-										else
-											return chboard -= 2;
+								return chboard = 3;
 							}
 							else
 								if (x == 3 && y == 2)
 								{
-									if (chboard == 3 || chboard == 6 || chboard == 9) { return chboard; }
-									else
-										return chboard += 1;
+									return chboard = 6;
 								}
 								else
 									if (x == 3 && y == 3)
 									{
-										if (chboard == 3 || chboard == 6) { return chboard += 3; }
-										else
-											if (chboard == 7 || chboard == 8) { return chboard += 1; }
-											else
-												if (chboard == 9) { return chboard; }
-												else
-													return chboard += 4;
+										return chboard = 9;
 									}
 }
-//ta funkcja nie ma na nic wp³ywu
+//ta funkcja nie ma na nic wpï¿½ywu
 void miejsceakcji(int chboard, int plr)
 {
 	cout << "aktualny ruch odbedzie sie na planszy: ";
@@ -334,7 +295,7 @@ void checkboard(int chboard, int *x, int *y)
 
 	}
 }
-//w board raczej ciê¿ko coœ zepsuæ.
+//w board raczej ciï¿½ï¿½ko coï¿½ zepsuï¿½.
 void board()
 {
 	system("cls");
@@ -372,7 +333,7 @@ void board()
 	cout << "  " << sq[0][8] << "  |  " << sq[1][8] << "  |  " << sq[2][8] << "          " << sq[3][8] << "  |  " << sq[4][8] << "  |  " << sq[5][8] << "          " << sq[6][8] << "  |  " << sq[7][8] << "  |  " << sq[8][8] << endl;
 	cout << "     |     |                |     |                |     |     " << endl;
 }
-//zrewidowana. dzia³a perfekcyjnie.
+//zrewidowana. dziaï¿½a perfekcyjnie.
 int fcheckwin()
 {
 	//int x=0,y=0;
@@ -385,22 +346,19 @@ int fcheckwin()
 		{
 
 				if (sq[x][y] == sq[x + 1][y] && sq[x + 1][y] == sq[x + 2][y] && sq[x][y]!=0)// 1 poziom
-				{ 
-					cout << "sprawdzenie 1 poziomu." << endl;
+				{
 					if (sq[x][y] == 88) { return 1; }
-					else 
+					else
 						if (sq[x][y] == 79) { return 2; }
 				}else
 				if (sq[x][y + 1] == sq[x + 1][y + 1] && sq[x + 1][y + 1] == sq[x + 2][y + 1] && sq[x][y+1] != 0)// 2 poziom
 				{
-					cout << "sprawdzenie 2 poziomu." << endl;
 					if (sq[x][y + 1] == 88) { return 1; }
 					else
 						if (sq[x][y + 1] == 79) { return 2; }
 				}else
 				if (sq[x][y + 2] == sq[x + 1][y + 2] && sq[x + 1][y + 2] == sq[x + 2][y + 2] && sq[x][y+2] != 0)// 3 poziom
 				{
-					cout << "sprawdzenie 3 poziomu." << endl;
 					if (sq[x][y + 2] == 88) { return 1; }
 					else
 						if (sq[x][y + 2] == 79) { return 2; }
@@ -408,21 +366,18 @@ int fcheckwin()
 
 				if (sq[x][y] == sq[x][y + 1] && sq[x][y + 1] == sq[x][y + 2] && sq[x][y] != 0)// 1 pion
 				{
-					cout << "sprawdzenie 1 pionu." << endl;
 					if (sq[x][y] == 88) { return 1; }
 					else
 						if (sq[x][y] == 79) { return 2; }
 				}else
 				if (sq[x+1][y] == sq[x+1][y + 1] && sq[x+1][y + 1] == sq[x+1][y + 2] && sq[x+1][y] != 0)// 2 pion
 				{
-					cout << "sprawdzenie 2 pionu." << endl;
 					if (sq[x + 1][y] == 88) { return 1; }
 					else
 						if (sq[x + 1][y] == 79) { return 2; }
 				}else
 				if (sq[x+2][y] == sq[x+2][y + 1] && sq[x+2][y + 1] == sq[x + 2][y + 2] && sq[x+2][y] != 0)// 3 pion
 				{
-					cout << "sprawdzenie 3 pionu." << endl;
 					if (sq[x + 2][y] == 88) { return 1; }
 					else
 						if (sq[x + 2][y] == 79) { return 2; }
@@ -430,14 +385,12 @@ int fcheckwin()
 
 				if (sq[x][y] == sq[x+1][y + 1] && sq[x+1][y + 1] == sq[x + 2][y + 2] && sq[x][y] != 0)// 1 skos (\)
 				{
-					cout << "sprawdzenie 1 skosu." << endl;
 					if (sq[x][y] == 88) { return 1; }
 					else
 						if (sq[x][y] == 79) { return 2; }
 				}else
 				if (sq[x][y+2] == sq[x + 1][y + 1] && sq[x + 1][y + 1] == sq[x+2][y] && sq[x][y+2] != 0)// 2 skos (/)
 				{
-					cout << "sprawdzenie 2 skosu." << endl;
 					if (sq[x][y+2] == 88) { return 1; }
 					else
 						if (sq[x][y+2] == 79) { return 2; }
@@ -446,7 +399,7 @@ int fcheckwin()
 			}
 
 		}
-	
+
 
 
 	//if(wincondition==1){return 1;}else if(wincondition==2){return 2;}else
@@ -462,7 +415,7 @@ int fcheckwin()
 	if (check == 81) { return 3; }
 	else
 		return 0;
-		
+
 }
 
 //moveSI operuje na liczbach OD 1 DO 3! NIE od 0 do 2 !!!
@@ -502,7 +455,6 @@ void moveSI(int *ptchboard,int *x, int *y)
 		SIx = 6;  SIy = 6;
 		break;
 	}
-	cout << "\nW funkcji moveSI\n SIx= " << SIx << "\nSIy= " << SIy <<"\n*ptchboard= "<<*ptchboard<< endl;
 
 		do {
 			moveSIx = rand() % 3 + 1;
@@ -567,7 +519,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 			}
 		}
 	}
-	cout << "\nFunkcja testowa znalazla na planszy " << test << " znakow O" << endl;
 	//test wydaje sie dobrym pomyslem :)
 	if (test == 1)
 	{
@@ -587,13 +538,7 @@ void logikaSI(int *x, int *y, int *ptchboard)
 			}
 		}
 	}
-	cout << "\ntest= " << test << endl;
-	cout << "\ncheckO1= " << checkO1 << endl;
-	if (checkO1 == 1)
-	{
-		cout << "pierwszy punkt O na aktualnej planszy znajduje sie w(wspolrzedne widzialne): x= " << Ox1+1 << " y= " << Oy1+1 << endl;
-	}
-	
+
 	if (test>1)
 	{
 		while(checkO2==0)
@@ -612,16 +557,13 @@ void logikaSI(int *x, int *y, int *ptchboard)
 			}
 		}
 	}
-	cout << "checkO2= " << checkO2 << endl;
 	if (checkO2 == 1)
 	{
-		cout << "drugi punkt O na aktualnej planszy znajduje sie w(wspolrzedne widzialne): x= " << Ox2+1 << " y= " << Oy2+1 << endl;
 	}
 
 
 	if (test < 2)
 	{
-		cout << "funkcja weszla w ifa ktory jest aktywny gdy test jest ponizej 2" << endl;
 		moveSI(ptchboard,x,y);
 	}
 	else
@@ -634,9 +576,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 				Oy3 = iy;
 				if (sq[SIx + Ox3][SIy + Oy3] == 0)
 				{
-					cout << "funkcja pozioma zwrocila wartosc." << endl;
-					cout << "\n\tOx3= " << Ox3 << endl;
-					cout << "\n\tOy3= " << Oy3 << endl;
 					*x = Ox3+1;
 					*y = Oy3+1;
 				}
@@ -646,7 +585,7 @@ void logikaSI(int *x, int *y, int *ptchboard)
 			//pion
 		if (Oy1 == Oy2)
 		{
-			
+
 			{
 				Oy3 = Oy1;
 				for (int ix = 0; ix <= 2; ix++)
@@ -654,9 +593,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 					Ox3 = ix;
 					if (sq[SIx + Ox3][SIy + Oy3] == 0)
 					{
-						cout << "funkcja poionowa zwrocila wartosc." << endl;
-						cout << "\n\tOx3= " << Ox3 << endl;
-						cout << "\n\tOy3= " << Oy3 << endl;
 						*x = Ox3+1;
 						*y = Oy3+1;
 					}
@@ -667,7 +603,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 			//skos
 			if(sq[SIx+1][SIy+1]!=88)
 			{
-				cout << "program wszedl w funkcje skosu." << endl;
 				if (sq[SIx][SIy] == 79 || sq[SIx+2][SIy+2] == 79)
 				{
 					Ox3 = 0;
@@ -685,7 +620,7 @@ void logikaSI(int *x, int *y, int *ptchboard)
 
 							}
 						}
-						
+
 					}
 				}
 				if (sq[SIx + 2][SIy] == 79 || sq[SIx][SIy + 2] == 79)
@@ -710,13 +645,10 @@ void logikaSI(int *x, int *y, int *ptchboard)
 				}
 				*x = Ox3+1;
 				*y = Oy3+1;
-				cout << "\n program zakonczyl funkcje warunkowo if pomyslnie." << endl;
-				cout << "\n\tOx3= " << Ox3 << endl;
-				cout << "\n\tOy3= " << Oy3 << endl;
 			}
 
 			else
-			{ 
+			{
 				moveSI(ptchboard, x, y);
 			}
 
@@ -727,8 +659,8 @@ int SI(int *wspx, int *wspy, int *wspplr, int* ptchboard)
 {
 	int newchboardSI;
 	int niezSIx, niezSIy;
-	
-		
+
+
 	logikaSI(wspx, wspy, ptchboard);
 
 		//moveSI(ptchboard,wspx, wspy);
@@ -739,16 +671,9 @@ int SI(int *wspx, int *wspy, int *wspplr, int* ptchboard)
 
 	makemove(wspx, wspy, wspplr);
 
-	cout << "chboardSI= " << *ptchboard;
-
 	newchboardSI = moveminiboard(niezSIx, niezSIy, *ptchboard);
 	*ptchboard = newchboardSI;
-
-	cout << "\t" << "newchboardSI= " << newchboardSI << endl;
-
-	cout << "niezmienione SI x= " << niezSIx << "\t" << "niezmienione SI y= " << niezSIy << endl;
 	checkwin = fcheckwin();
-	cout << "\ncheckwin= " << checkwin << endl;
 	system("pause");
 
 	return checkwin;

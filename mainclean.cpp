@@ -92,17 +92,10 @@ int main()
 
 			makemove(wspx, wspy, wspplr);
 
-			cout << "chboard= " << chboard;
-
 			newchboard = moveminiboard(niezmienionex, niezmienioney, chboard);
 			chboard = newchboard;
-
-			cout << "\t" << "newchboard= " << newchboard << endl;
-
-			cout << "niezmienione x= " << niezmienionex << "\t" << "niezmienione y= " << niezmienioney << endl;
 			//system("pause");
 			checkwin = fcheckwin();
-			cout << "\ncheckwin= " << checkwin << endl;
 			system("pause");
 		}
 			else
@@ -386,21 +379,18 @@ int fcheckwin()
 
 				if (sq[x][y] == sq[x + 1][y] && sq[x + 1][y] == sq[x + 2][y] && sq[x][y]!=0)// 1 poziom
 				{ 
-					cout << "sprawdzenie 1 poziomu." << endl;
 					if (sq[x][y] == 88) { return 1; }
 					else 
 						if (sq[x][y] == 79) { return 2; }
 				}else
 				if (sq[x][y + 1] == sq[x + 1][y + 1] && sq[x + 1][y + 1] == sq[x + 2][y + 1] && sq[x][y+1] != 0)// 2 poziom
 				{
-					cout << "sprawdzenie 2 poziomu." << endl;
 					if (sq[x][y + 1] == 88) { return 1; }
 					else
 						if (sq[x][y + 1] == 79) { return 2; }
 				}else
 				if (sq[x][y + 2] == sq[x + 1][y + 2] && sq[x + 1][y + 2] == sq[x + 2][y + 2] && sq[x][y+2] != 0)// 3 poziom
 				{
-					cout << "sprawdzenie 3 poziomu." << endl;
 					if (sq[x][y + 2] == 88) { return 1; }
 					else
 						if (sq[x][y + 2] == 79) { return 2; }
@@ -408,21 +398,18 @@ int fcheckwin()
 
 				if (sq[x][y] == sq[x][y + 1] && sq[x][y + 1] == sq[x][y + 2] && sq[x][y] != 0)// 1 pion
 				{
-					cout << "sprawdzenie 1 pionu." << endl;
 					if (sq[x][y] == 88) { return 1; }
 					else
 						if (sq[x][y] == 79) { return 2; }
 				}else
 				if (sq[x+1][y] == sq[x+1][y + 1] && sq[x+1][y + 1] == sq[x+1][y + 2] && sq[x+1][y] != 0)// 2 pion
 				{
-					cout << "sprawdzenie 2 pionu." << endl;
 					if (sq[x + 1][y] == 88) { return 1; }
 					else
 						if (sq[x + 1][y] == 79) { return 2; }
 				}else
 				if (sq[x+2][y] == sq[x+2][y + 1] && sq[x+2][y + 1] == sq[x + 2][y + 2] && sq[x+2][y] != 0)// 3 pion
 				{
-					cout << "sprawdzenie 3 pionu." << endl;
 					if (sq[x + 2][y] == 88) { return 1; }
 					else
 						if (sq[x + 2][y] == 79) { return 2; }
@@ -430,14 +417,12 @@ int fcheckwin()
 
 				if (sq[x][y] == sq[x+1][y + 1] && sq[x+1][y + 1] == sq[x + 2][y + 2] && sq[x][y] != 0)// 1 skos (\)
 				{
-					cout << "sprawdzenie 1 skosu." << endl;
 					if (sq[x][y] == 88) { return 1; }
 					else
 						if (sq[x][y] == 79) { return 2; }
 				}else
 				if (sq[x][y+2] == sq[x + 1][y + 1] && sq[x + 1][y + 1] == sq[x+2][y] && sq[x][y+2] != 0)// 2 skos (/)
 				{
-					cout << "sprawdzenie 2 skosu." << endl;
 					if (sq[x][y+2] == 88) { return 1; }
 					else
 						if (sq[x][y+2] == 79) { return 2; }
@@ -502,7 +487,6 @@ void moveSI(int *ptchboard,int *x, int *y)
 		SIx = 6;  SIy = 6;
 		break;
 	}
-	cout << "\nW funkcji moveSI\n SIx= " << SIx << "\nSIy= " << SIy <<"\n*ptchboard= "<<*ptchboard<< endl;
 
 		do {
 			moveSIx = rand() % 3 + 1;
@@ -567,7 +551,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 			}
 		}
 	}
-	cout << "\nFunkcja testowa znalazla na planszy " << test << " znakow O" << endl;
 	//test wydaje sie dobrym pomyslem :)
 	if (test == 1)
 	{
@@ -586,12 +569,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 				}
 			}
 		}
-	}
-	cout << "\ntest= " << test << endl;
-	cout << "\ncheckO1= " << checkO1 << endl;
-	if (checkO1 == 1)
-	{
-		cout << "pierwszy punkt O na aktualnej planszy znajduje sie w(wspolrzedne widzialne): x= " << Ox1+1 << " y= " << Oy1+1 << endl;
 	}
 	
 	if (test>1)
@@ -612,16 +589,13 @@ void logikaSI(int *x, int *y, int *ptchboard)
 			}
 		}
 	}
-	cout << "checkO2= " << checkO2 << endl;
 	if (checkO2 == 1)
 	{
-		cout << "drugi punkt O na aktualnej planszy znajduje sie w(wspolrzedne widzialne): x= " << Ox2+1 << " y= " << Oy2+1 << endl;
 	}
 
 
 	if (test < 2)
 	{
-		cout << "funkcja weszla w ifa ktory jest aktywny gdy test jest ponizej 2" << endl;
 		moveSI(ptchboard,x,y);
 	}
 	else
@@ -634,9 +608,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 				Oy3 = iy;
 				if (sq[SIx + Ox3][SIy + Oy3] == 0)
 				{
-					cout << "funkcja pozioma zwrocila wartosc." << endl;
-					cout << "\n\tOx3= " << Ox3 << endl;
-					cout << "\n\tOy3= " << Oy3 << endl;
 					*x = Ox3+1;
 					*y = Oy3+1;
 				}
@@ -654,9 +625,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 					Ox3 = ix;
 					if (sq[SIx + Ox3][SIy + Oy3] == 0)
 					{
-						cout << "funkcja poionowa zwrocila wartosc." << endl;
-						cout << "\n\tOx3= " << Ox3 << endl;
-						cout << "\n\tOy3= " << Oy3 << endl;
 						*x = Ox3+1;
 						*y = Oy3+1;
 					}
@@ -667,7 +635,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 			//skos
 			if(sq[SIx+1][SIy+1]!=88)
 			{
-				cout << "program wszedl w funkcje skosu." << endl;
 				if (sq[SIx][SIy] == 79 || sq[SIx+2][SIy+2] == 79)
 				{
 					Ox3 = 0;
@@ -710,9 +677,6 @@ void logikaSI(int *x, int *y, int *ptchboard)
 				}
 				*x = Ox3+1;
 				*y = Oy3+1;
-				cout << "\n program zakonczyl funkcje warunkowo if pomyslnie." << endl;
-				cout << "\n\tOx3= " << Ox3 << endl;
-				cout << "\n\tOy3= " << Oy3 << endl;
 			}
 
 			else
@@ -739,16 +703,9 @@ int SI(int *wspx, int *wspy, int *wspplr, int* ptchboard)
 
 	makemove(wspx, wspy, wspplr);
 
-	cout << "chboardSI= " << *ptchboard;
-
 	newchboardSI = moveminiboard(niezSIx, niezSIy, *ptchboard);
 	*ptchboard = newchboardSI;
-
-	cout << "\t" << "newchboardSI= " << newchboardSI << endl;
-
-	cout << "niezmienione SI x= " << niezSIx << "\t" << "niezmienione SI y= " << niezSIy << endl;
 	checkwin = fcheckwin();
-	cout << "\ncheckwin= " << checkwin << endl;
 	system("pause");
 
 	return checkwin;
